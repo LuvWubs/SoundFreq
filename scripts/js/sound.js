@@ -1,4 +1,4 @@
-// const Howl = require('howler');
+const soundFile = require('../models/soundObj.js')
 
 $(document).ready(function() {
 
