@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LuvWubs/SoundFreq/issues"
   },
-  "homepage": "https://github.com/LuvWubs/SoundFreq#readme"
+  "homepage": "https://github.com/LuvWubs/SoundFreq#readme",
+  "dependencies": {
+    "howler": "^2.0.12"
+  }
 }

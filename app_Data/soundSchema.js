@@ -1,3 +1,5 @@
+//this is dummy data for the db
+
 CREATE DATABASE IF NOT EXISTS soundFiles;
 USE soundFiles;
 
