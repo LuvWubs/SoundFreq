@@ -1,4 +1,5 @@
 // *** all sounds courtesy of http://bbcsfx.acropolis.org.uk/ & https://freesound.org
+<<<<<<< HEAD
 //
 const express = require("express");
 const app = express();
@@ -23,3 +24,13 @@ router.get('/intro', function(req, res) {
 });
 
 module.exports = router;
+=======
+
+const express = require("express");
+const router = express.Router();
+const soundFile = require("./models/soundObj.js");
+
+router.get("/", function(req, res) {
+  
+})
+>>>>>>> test
