@@ -95,10 +95,8 @@ SELECT * FROM soundDB.electronics;
 SELECT * FROM soundDB.nature;
 SELECT * FROM soundDB.noise;
 
-
 SELECT id, sound_name, sound_file FROM soundDB.bug;
 SELECT id, sound_name, sound_file FROM soundDB.drops;
 SELECT id, sound_name, sound_file FROM soundDB.electronics;
 SELECT id, sound_name, sound_file FROM soundDB.nature;
 SELECT id, sound_name, sound_file FROM soundDB.noise;
-

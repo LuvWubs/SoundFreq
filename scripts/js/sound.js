@@ -1,4 +1,4 @@
-const soundFile = require('../models/soundObj.js')
+// const soundFile = require('../scripts/models/soundObj.js')
 
 $(document).ready(function() {
 
@@ -12,10 +12,14 @@ $(document).ready(function() {
   //   }
   // });
 
+  function bugs() {
+    console.log('you got bugs!');
+  }
+
   $(document).keydown(function(e) {
 //need to load file path from db in each switch statement
     switch (e.which) {
-      case 65:
+      case 65: bugs();
           break;
       case 66:
           break;
