@@ -1,3 +1,4 @@
+// Initial database for project - modify as needed
 DROP DATABASE IF EXISTS soundDB;
 CREATE DATABASE soundDB;
 USE soundDB;
@@ -38,7 +39,7 @@ CREATE TABLE noise (
     PRIMARY KEY (id)
 );
 
-INSERT INTO bug (sound_name, sound_file) VALUES
+INSERT INTO bug (sound_name, sound_file) VALUES 
 	('bug-buzz', 'bug-buzz.wav'),
 	('bug-call', 'bug-call.wav'),
 	('bug-clicks', 'bug-clicks.wav'),
@@ -63,10 +64,10 @@ INSERT INTO electronics (sound_name, sound_file) VALUES
 	('electronics-pipes', 'electronics-pipes.wav'),
 	('electronics-signal', 'electronics-signal.wav'),
 	('electronics-warble', 'electronics-warble.wav');
-
+  
 INSERT INTO nature (sound_name, sound_file) VALUES
 	('nature-frogs', 'nature-frogs.mp3');
-
+    
 INSERT INTO noise (sound_name, sound_file) VALUES
 	('noise-beads', 'noise-beads.wav'),
 	('noise-boioing', 'noise-boioing.wav'),
@@ -85,7 +86,7 @@ INSERT INTO noise (sound_name, sound_file) VALUES
 	('noise-stungun', 'noise-stungun.wav'),
 	('noise-thump', 'noise-thump.wav'),
 	('noise-whizz', 'noise-whizz.wav');
-
+  
 COMMIT;
 
 SELECT * FROM soundDB.bug;
@@ -93,7 +94,6 @@ SELECT * FROM soundDB.drops;
 SELECT * FROM soundDB.electronics;
 SELECT * FROM soundDB.nature;
 SELECT * FROM soundDB.noise;
-
 
 SELECT id, sound_name, sound_file FROM soundDB.bug;
 SELECT id, sound_name, sound_file FROM soundDB.drops;
