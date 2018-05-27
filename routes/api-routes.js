@@ -12,6 +12,18 @@ var db = require("../app/models");
 // =============================================================
 module.exports = function(app) {
 
+  // /audiovisual/" + keyChoice
+  // get audiovisual data
+  app.get("/audiovisual/:keyChoice", function(req, res) {
+    var keyChoice = req.params.keyChoice;
+
+    //console.log('keyChoice', keyChoice);
+
+    // use keyChoice to get audio and visual from db
+    db.AudioVisual
+
+  });
+
   // GET route for getting all of the posts
   app.get("/api/posts/", function(req, res) {
     db.Post.findAll({})

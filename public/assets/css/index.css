@@ -1,12 +1,3 @@
-/* NOTE delete #play before deployment */
-#play {
-  background-color: teal;
-  height: 90px;
-  width: 130px;
-  position: relative;
-  margin-top: 70px;
-}
-
 #canvas-main {
   background-color: #e6e8fa;
   margin: 0;

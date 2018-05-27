@@ -1,10 +1,10 @@
 // *** all sounds courtesy of http://bbcsfx.acropolis.org.uk/ & https://freesound.org
 //
 const express = require("express");
-const app = express();
+// const app = express();
 const router = express.Router();
-var path = require("path");
-const soundFile = require("../models/soundObj.js");
+// var path = require("path");
+const soundFile = require("./models");
 
 // app.use(express.static(__dirname + './views/'));
 
@@ -12,6 +12,12 @@ router.get('/', function(req, res) {
   // var id = req.params.id;
   // console.log('parameter id: ', id);
   res.sendFile(path.join(__dirname,'../views/home.html'));
+});
+
+router.get('/audio/:soundFile', function(req, res) {
+  soundFile.getOne(function(sound) {
+    //NOTE use howler to play noise
+  });
 });
 
 router.get('/intro', function(req, res) {
