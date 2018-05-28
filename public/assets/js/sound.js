@@ -38,6 +38,7 @@ sound.rate(1.5, id2);
 
   $( document ).on( "keydown", function( event ) {
     var keyChoice = event.which;
+    console.log(keyChoice);
     $.ajax({
       method: "GET",
       //url: "/audio" + keyChoice
