@@ -5,14 +5,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1]
-      }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     },
-    description: {
+    category: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
-      }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     }
   });
   return SoundType;

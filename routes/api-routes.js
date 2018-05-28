@@ -2,83 +2,102 @@
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // *********************************************************************************
 
-// Dependencies
-// =============================================================
+/**************************
+ Dependencies
+**************************/
+var soundData = require('../app/data.js');
+var path = require('path');
+
 
 // Requiring our Todo model
 var db = require("../app/models");
 
+
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
+  /*
+  working routes
+  */
+  // Get route for returning all sounds 
+  app.get("/api/soundFiles", function (req, res) {
+     res.json(soundData);
+  });
 
-  // GET route for getting all of the posts
-  app.get("/api/posts/", function(req, res) {
-    db.Post.findAll({})
-      .then(function(dbPost) {
-        res.json(dbPost);
+  /*********************
+  needs more work
+  **********************/
+  // GET route for getting all of the sound types
+  app.get("/api/soundTypes/", function (req, res) {
+    db.SoundType.findAll({})
+      .then(function (dbSoundType) {
+        res.json(dbSoundType);
+        console.log(dbSoundType);
       });
   });
 
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
-    db.Post.findAll({
+  //GET route to retrieve sounds by category
+  app.get("/api/soundTypes/:category", function (req, res) {
+    db.SoundType.findOne({
       where: {
-        category: req.params.category
+        id: req.params.category
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function (dbSoundType) {
+        res.json(dbSoundType);
       });
   });
 
-  // Get route for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
+
+  // Get route for retrieving a single sound
+  app.get("/api/soundFiles/:id", function (req, res) {
     db.Post.findOne({
       where: {
         id: req.params.id
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function (dbSoundFile) {
+        res.json(dbSoundFile);
       });
   });
 
   // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
+  app.post("/", function (req, res) {
     console.log(req.body);
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
-
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Post.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
-
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.Post.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
+    db.soundFiles.create({
+      name: req.body.name,
+      description: req.body.description
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function () {
+        res.json(soundData);
       });
   });
+
+  
+  // This should inject our data.js file from JSON into a MYSQL database on page load
+  app.post("/", function (req, res) {
+    db.soundFiles.create(req.body,
+      {
+        name: req.body.name,
+        description: req.body.description
+      })
+      .then(function () {
+        res.json(dbSoundFiles);
+      });
+  });
+  
+  /**************
+   * dete routes not needed since users wont be deleting data from server
+ *************/
+// DELETE route for deleting posts
+app.delete("/api/posts/:id", function (req, res) {
+  db.Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function (dbPost) {
+      res.json(dbPost);
+    });
+});
 };

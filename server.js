@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -11,6 +10,8 @@ var db = require("./app/models");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 //NOTE will need to require the entire conrollers file for funtionality
 // const routes = require("./controllers/sound-controller.js");
