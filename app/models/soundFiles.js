@@ -1,34 +1,37 @@
 var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
-// module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
 
-  var SoundFile = sequelize.define("SoundFiles", {
+  var SoundFile = sequelize.define("SoundFile", {
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // type: DataTypes.UUID,
+      // defaultValue: DataTypes.UUIDV4
+      // validate: {
+      //   len: [1]
+      // }
     },
     file: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // unique: true,
+      // validate: {
+      //   len: [1]
+      // }
     },
     description: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      // validate: {
+      //   len: [1]
+      // }
     }
-  })
-//   return SoundFile;
-// };
+  });
+  return SoundFile;
+  // SoundFile.sync();
+};
 
-SoundFile.sync();
 
-module.exports = SoundFile;
+// module.exports = SoundFile;
