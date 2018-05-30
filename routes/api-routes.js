@@ -50,14 +50,14 @@ module.exports = function (app) {
 
 
   // Get route for retrieving a single sound
-  app.get("/api/soundFiles/:id", function (req, res) {
-    db.Post.findOne({
+  app.get("/api/soundFiles/:name", function (req, res) {
+    db.soundFiles.findOne({
       where: {
-        id: req.params.id
+        id: req.params.name
       }
     })
-      .then(function (dbSoundFile) {
-        res.json(dbSoundFile);
+      .then(function (dbSoundFiles) {
+        res.json(dbSoundFiles);
       });
   });
 
