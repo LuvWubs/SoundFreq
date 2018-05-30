@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 // Requiring our models for syncing
-var db = require("./app/models");
+var db = require("./models");
 
 app.use(express.static("./public/assets"));
 

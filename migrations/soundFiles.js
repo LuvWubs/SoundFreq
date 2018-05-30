@@ -7,26 +7,22 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      // type: DataTypes.UUID,
-      // defaultValue: DataTypes.UUIDV4
-      // validate: {
-      //   len: [1]
-      // }
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4
     },
     file: {
       type: DataTypes.TEXT,
       allowNull: false,
-      // unique: true,
-      // validate: {
-      //   len: [1]
-      // }
+      validate: {
+        len: [1]
+      }
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
-      // validate: {
-      //   len: [1]
-      // }
+      validate: {
+        len: [1]
+      }
     }
   });
   return SoundFile;
