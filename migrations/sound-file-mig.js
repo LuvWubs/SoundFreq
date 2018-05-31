@@ -6,16 +6,24 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        // type: Sequelize.UUID,
+        // defaultValue: Sequelize.UUIDV4
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
       },
       file: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        unique: true,
+        allowNull: false
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        // primaryKey: true,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
