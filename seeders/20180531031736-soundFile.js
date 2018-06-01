@@ -11,12 +11,45 @@ module.exports = {
       //   name: 'John Doe',
       //   isBetaMember: false
       // }], {});
-      return queryInterface.bulkInsert('Users', [{
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'demo@demo.com'
-      }], {});
-  }, 
+      return queryInterface.bulkInsert('SoundFiles', [{
+        name: 'buzz',
+        file: 'bug-buzz.wav',
+        description: 'bug'
+      }, {
+        name: 'call',
+        file: 'bug-call.wav',
+        description: 'bug'
+      }, {
+        name: 'clicks',
+        file: 'bug-clicks.wav',
+        description: 'bug'
+      }, {
+        name: 'fireants',
+        file: 'bug-fireants.wav',
+        description: 'bug'
+      }, {
+        name: 'purring',
+        file: 'bug-purring.wav',
+        description: 'bug'
+      }, {
+        name: 'wings',
+        file: 'bug-wings.wav',
+        description: 'bug'
+      }, {
+        name: 'beatbox',
+        file: 'drops-beatbox.wav',
+        description: 'drops'
+      }, {
+        name: 'explosion',
+        file: 'drops-explosion.wav',
+        description: 'drops'
+      }, {
+        name: 'warble',
+        file: 'drops-warble.wav',
+        description: 'drops'
+      }
+    ]);
+  },
 
   down: (queryInterface, Sequelize) => {
     /*

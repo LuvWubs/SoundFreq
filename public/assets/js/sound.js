@@ -1,63 +1,59 @@
 // const soundDB = require('./sounds')
-// $(document).ready(function() {
+$(document).ready(function() {
 
-  // $( document ).keydown(function( event ) {
-  //   if ( event.which == 65 ) {
-  //      event.preventDefault();
-  //   }
-  // });
-  // $(document).keypress(function(e) {
-  //   console.log('a button was pressed');
-  //   if(e == 65) {
-  //     console.log('the A key  is working');
-  //   }
+  $( document ).keydown(function( event ) {
 
+    var thump = new Howl({
+      src: ['/sounds/noise-thump.wav', 'noise-thump.mp3', 'noise-thump.webm'],
+      autoplay: false,
+      loop: false,
+      volume: 0.5,
+      onend: function() {
+        console.log('Finished!');
+      }
+    });
 
-  var sound = new Howl({
-    src: ['/sounds/noise-thump.wav', 'noise-thump.mp3', 'noise-thump.webm'],
-    autoplay: false,
-    loop: false,
-    volume: 0.5,
-    onend: function() {
-      console.log('Finished!');
-    }
+    if ( event.which == 65 ) {
+       event.preventDefault();
+       console.log('the A key is working');
+       thump.play();
+    };
+
   });
-
-  var sound = new Howl({
-  src: ['sound.webm', 'sound.mp3']
 });
+
 
 // Play returns a unique Sound ID that can be passed
 // into any method on Howl to control that specific sound.
-var id1 = sound.play();
-var id2 = sound.play();
+// var id1 = sound.play();
+// var id2 = sound.play();
 
 // Fade out the first sound and speed up the second.
-sound.fade(1, 0, 1000, id1);
-sound.rate(1.5, id2);
-
-  $( document ).on( "keydown", function( event ) {
-    var keyChoice = event.which;
-    console.log(keyChoice);
-    $.ajax({
-      method: "GET",
-      //url: "/audio" + keyChoice
-      url: "/audiovisual/" + keyChoice
-    }).then(function(data) {
-      // data = { audio: 'thump.wav', visual: 'cat.jpeg' }
-      // NOTE play sound file
-      var audio = data.audio;
-      var visual = data.visual;
-      // play audiovisual
-
-      // play visual
-
-    })
-      // switch (event.which) {
-      //   case 65: sound();
-      //       // break;
-      // }
-  });
+// sound.fade(1, 0, 1000, id1);
+// sound.rate(1.5, id2);
+//
+//   $( document ).on( "keydown", function( event ) {
+//     var keyChoice = event.which;
+//     console.log(keyChoice);
+//     $.ajax({
+//       method: "GET",
+//       //url: "/audio" + keyChoice
+//       url: "/audiovisual/" + keyChoice
+//     }).then(function(data) {
+//       // data = { audio: 'thump.wav', visual: 'cat.jpeg' }
+//       // NOTE play sound file
+//       var audio = data.audio;
+//       var visual = data.visual;
+//       // play audiovisual
+//
+//       // play visual
+//
+//     })
+//       // switch (event.which) {
+//       //   case 65: sound();
+//       //       // break;
+//       // }
+//   });
   // });
 //
 // // const song = require('../..app/models/soundFiles.js')
