@@ -6,7 +6,8 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models/soundfile.js");
+var db = require("../models");
+//var db = require("../models/soundfile.js");
 // var dbType = require("../app/models/soundTypes.js");
 
 // Routes
@@ -59,18 +60,33 @@ module.exports = function(app) {
   //     });
   // });
 
-  // // POST route for saving a new post
-  // app.post("/api/posts", function(req, res) {
-  //   console.log(req.body);
-  //   db.Post.create({
-  //     title: req.body.title,
-  //     body: req.body.body,
-  //     category: req.body.category
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
+  // POST route for saving a new post
+  app.post("/api/sounds", function(req, res) {
+    console.log(req.body);
+    var sounds = req.body.sounds;
+
+//     id, name, file, description
+    sounds.forEach(function(sound) {
+      db.SoundFile.create({
+        name: sound.name,
+        file: sound.file,
+        description: sound.description
+      });
+        //.then(function(dbPost) {
+          //res.json(dbPost);
+        //});
+    });
+
+    //GET route for getting all of the posts
+    app.get("/api/sounds", function(req, res) {
+      db.SoundFile.findAll({})
+        .then(function(dbPost) {
+          res.json(dbPost);
+        });
+    });
+
+
+  });
 
   // // DELETE route for deleting posts
   // app.delete("/api/posts/:id", function(req, res) {

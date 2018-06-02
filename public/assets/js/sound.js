@@ -1,6 +1,33 @@
 // const soundDB = require('./sounds')
 $(document).ready(function() {
 
+  // make api call to populate db with Sounds
+  //$.ajax({
+    //method: 'POST',
+    //data: {}
+  //});
+  //     id, name, file, description
+  $.post('/api/sounds', {sounds: [
+    {
+      name: 'thump',
+      file: '/sounds/noise-thump.wav',
+      description: 'thump'
+    },
+    {
+      name: 'bump',
+      file: '/sounds/noise-bump.wav',
+      description: 'bump'
+    },
+  ]});
+
+  $.get('/api/sounds', function(data) {
+    console.log('data!!!!', data);
+
+    // loop over data.sounds and attach event listeners to them
+    
+
+  });
+
   $( document ).keydown(function( event ) {
 
     var thump = new Howl({

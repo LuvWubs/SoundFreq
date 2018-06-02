@@ -23,6 +23,7 @@ $(document).ready(function() {
 
   function mainPage() {
     $('#goPlay').html('send to intro');
+    document.location.href = '/home';
   }
 
   var firstL = false;
