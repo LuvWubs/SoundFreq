@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     file: {
       type: DataTypes.TEXT,
       allowNull: false,
-    // },
-    // description: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     }
   // }, {});
   // SoundFile.associate = function(models) {

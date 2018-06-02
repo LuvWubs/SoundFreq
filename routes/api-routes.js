@@ -6,7 +6,7 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models/soundFile.js");
+var db = require("../models/soundfile.js");
 // var dbType = require("../app/models/soundTypes.js");
 
 // Routes
