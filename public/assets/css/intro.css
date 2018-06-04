@@ -1,3 +1,35 @@
-h1 {
+.hello {
+  text-align: center;
   font-weight: bolder;
+  font-size: 130px;
+  display: inline;
+  margin-top: 300px;
+  font-family: "Arial Black", 'Gadget', sans-serif;
+}
+
+.canvas {
+  height: 100%;
+  width: 100%;
+}
+
+h1>span {
+  margin-left: -15px;
+}
+
+#h {
+  padding-left: 445px;
+}
+
+body {
+  background-color: #e6e8fa;
+}
+
+#howTo {
+  text-align: center;
+  font-size: 28px;
+}
+
+#goPlay {
+  text-align: center;
+  font-size: 28px;
 }

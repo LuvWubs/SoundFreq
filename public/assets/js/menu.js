@@ -9,5 +9,9 @@ $(document).ready(function(){
   		e.preventDefault();
   		$('body').removeClass('nav-expanded');
   	});
+    $('.list-soundThemes').on('click',function(e){
+  		e.preventDefault();
+  		$('body').removeClass('nav-expanded');
+  	});
 
 });

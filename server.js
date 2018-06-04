@@ -1,22 +1,21 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+// var sequelize = require("./app/config/connection.js");
 
-const PORT = process.env.PORT || 3080;
+
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 // Requiring our models for syncing
-var db = require("./app/models");
+var db = require("./models");
 
-app.use(express.static("public"));
+app.use(express.static("./public/assets"));
+
+// app.use(express.static("./public/assets/css"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//NOTE will need to require the entire conrollers file for funtionality
-// const routes = require("./controllers/sound-controller.js");
-
-// Routes
-// =============================================================
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 

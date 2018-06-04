@@ -8,9 +8,10 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../scripts/css/index.css">
-    <link rel="stylesheet" type="text/css" href="../scripts/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="../scripts/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+     <link rel="stylesheet" type="text/css" href="/css/intro.css">
+     <link rel="stylesheet" type="text/css" href="/css/menu.css">
+     <link rel="stylesheet" type="text/css" href="/css/navbar.css">
 
   </head>
   <body>
@@ -20,21 +21,19 @@
         <ul class="list-unstyled main-menu">
           <li class="text-right"><a href="#" id="nav-close">[close]</a></li>
 
-          <!-- <li><a href="#">Audio Themes <span class="icon"></span></a></li> -->
           <li>
-            <form method="GET">Audio Themes
+            <form id="form-group" method="GET">Audio Themes
               <ul class="list-soundThemes">
-                <!-- <INPUT type="button" value="Bugs" name="bugListTheme" onclick="return getBugs();"> -->
-                <li class="sub-nav"><a href="/" class="list" id="bugs">Bugs<span class="icon"></span></a></li>
-                <li class="sub-nav"><a href="/" class="list" id="drops">Drops<span class="icon"></span></a></li>
-                <li class="sub-nav"><a href="/" class="list" id="electronics">Electronics<span class="icon"></span></a></li>
-                <li class="sub-nav"><a href="/" class="list" id="noises">Noises<span class="icon"></span></a></li>
-                <li class="sub-nav"><a href="/" class="list" id="all">All Themes<span class="icon"></span></a></li>
+                <li class="sound-nav"><a href="#" class="list" id="bug">Bugs<span class="icon"></span></a></li>
+                <li class="sound-nav"><a href="#" class="list" id="drops">Drops<span class="icon"></span></a></li>
+                <li class="sound-nav"><a href="#" class="list" id="electronics">Electronics<span class="icon"></span></a></li>
+                <li class="sound-nav"><a href="#" class="list" id="noise">Noises<span class="icon"></span></a></li>
+                <li class="sound-nav"><a href="#" class="list" id="all">All Themes<span class="icon"></span></a></li>
               </ul>
             </form>
           </li>
-          <!-- <li><a href="#">Visual Themes <span class="icon"></span></a></li> -->
-          <li><form action="../controllers/image-controller.js" method="GET">Visual Themes</form>
+<!-- NOTE add this back in for visual elements when added
+          <li><form id="form-group" method="GET">Visual Themes</form>
             <ul class="list-unstyled">
                 <li class="sub-nav"><a href="#">Sub Menu One <span class="icon"></span></a></li>
                 <li class="sub-nav"><a href="#">Sub Menu Two <span class="icon"></span></a></li>
@@ -42,7 +41,7 @@
                 <li class="sub-nav"><a href="#">Sub Menu Four <span class="icon"></span></a></li>
                 <li class="sub-nav"><a href="#">Sub Menu Five <span class="icon"></span></a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav>
 
@@ -54,19 +53,19 @@
           </a>
         </div>
       </div>
+      <div class="canvas">
 
-      <!-- NOTE audio visual content goes here -->
+        <!-- NOTE audio visual content will go here -->
 
-      <!-- NOTE this button is for sandboxing only  -->
-      <button id="play">Play</button>
+      </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../scripts/js/menu.js"></script>
-    <script src="../models/howler.js"></script>
-    <script src="../controllers/sound-controller.js"></script>
-    <script src="../scripts/js/sound.js"></script>
+    <script type="text/javascript" src="/js/menu.js"></script>
+    <script src="/js/howler.js"></script>
+    <script src="/js/sound.js"></script>
 
   </body>
 </html>
