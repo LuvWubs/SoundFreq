@@ -14,15 +14,14 @@ $(document).ready(function() {
   }
 
   function fadeIt() {
-    $('#hello').fadeTo(3000, 0, function() {
-      $('#hello').css("visibility", "hidden");
-    });
+    $('#hello').fadeTo(3000, 0);
+    // , function() {
+    //   $('#hello').css("visibility", "hidden");
+    // });
     $('#howTo').fadeIn(2000);
-    // introSound.loop = false;
   };
 
   function mainPage() {
-    $('#goPlay').html('send to intro');
     document.location.href = '/home';
   }
 
@@ -64,10 +63,8 @@ $(document).ready(function() {
 
     if ( event.which == 72 ) {
       $('#howTo').fadeOut();
-      $('#h').fadeIn(1000);
-      //   , function() {
-        $('#h').css("visibility", "visible");
-      // });
+      // $('div#hello > #h').fadeTo(3000, 1);
+      $('#hello').fadeTo(3000, 1);
       h.play();
     };
     if ( event.which == 69 ) {
@@ -89,7 +86,7 @@ $(document).ready(function() {
       $('#o').fadeIn();
       o.play();
       $('#goPlay').show();
-      setTimeout(6000, mainPage());
+      setTimeout(mainPage, 4000);
     };
 
   });

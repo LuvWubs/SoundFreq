@@ -1,3 +1,5 @@
+// NOTE this file is not in use
+
 DROP DATABASE IF EXISTS soundDB;
 CREATE DATABASE soundDB;
 

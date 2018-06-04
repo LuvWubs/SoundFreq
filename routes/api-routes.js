@@ -1,115 +1,39 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Requiring our Todo model
 var db = require("../models");
-//var db = require("../models/soundfile.js");
-// var dbType = require("../app/models/soundTypes.js");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
 
-  // // /audiovisual/" + keyChoice
-  // // get audiovisual data
-  // app.get("/audiovisual/:keyChoice", function(req, res) {
-  //   var keyChoice = req.params.keyChoice;
-  //
-  //   //console.log('keyChoice', keyChoice);
-  //
-  //   // use keyChoice to get audio and visual from db
-  //   db.AudioVisual
-  //
-  // });
-
-  // GET route for getting all of the posts
-  // app.get("/api/posts/", function(req, res) {
-  //   db.findAll({})
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
-
-    console.log('api-routes finding category...');
-    db.findAll({
+  app.get("/api/sounds/:category", function(req, res) {
+    console.log('api-routes finding category...', req.params.category);
+    var category = req.params.category;
+    db.SoundFile.findAll({
       where: {
-        name: req.params.category
+        description: category
       }
     })
-      .then(function(results) {
-        res.json(results);
-      });
+    .then(function(results) {
+      res.json(results);
+    });
   });
 
-  // // Get route for retrieving a single post
-  // app.get("/api/posts/:id", function(req, res) {
-  //   db.Post.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
-  // POST route for saving a new post
   app.post("/api/sounds", function(req, res) {
-    console.log(req.body);
     var sounds = req.body.sounds;
-
-//     id, name, file, description
     sounds.forEach(function(sound) {
       db.SoundFile.create({
         name: sound.name,
         file: sound.file,
         description: sound.description
       });
-        //.then(function(dbPost) {
-          //res.json(dbPost);
-        //});
     });
 
-    //GET route for getting all of the posts
-    app.get("/api/sounds", function(req, res) {
-      db.SoundFile.findAll({})
-        .then(function(dbPost) {
-          res.json(dbPost);
-        });
-    });
-
+//NOTE will need this for 'all ' sounds
+    // app.get("/api/sounds/all", function(req, res) {
+    //   console.log('api-routes hit');
+    //   db.SoundFile.findAll({})
+    //     .then(function(dbPost) {
+    //       res.json(dbPost);
+    //     });
+    // });
 
   });
 
-  // // DELETE route for deleting posts
-  // app.delete("/api/posts/:id", function(req, res) {
-  //   db.Post.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
-//   // PUT route for updating posts
-//   app.put("/api/posts", function(req, res) {
-//     db.Post.update(req.body,
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       })
-//       .then(function(dbPost) {
-//         res.json(dbPost);
-//       });
-//   });
 };

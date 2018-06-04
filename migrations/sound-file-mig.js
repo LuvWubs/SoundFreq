@@ -1,4 +1,6 @@
 'use strict';
+//NOTE this will be used for primary/foreign key pairings in future applications
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('SoundFiles', {
@@ -6,8 +8,6 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        // type: Sequelize.UUID,
-        // defaultValue: Sequelize.UUIDV4
         type: Sequelize.INTEGER
       },
       name: {
@@ -22,7 +22,6 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT,
-        // primaryKey: true,
         allowNull: false
       },
       createdAt: {

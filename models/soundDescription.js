@@ -1,7 +1,6 @@
 'use strict';
-// these are not needed???
-// var Sequelize = require("sequelize");
-// var sequelize = require("../config/connection.js");
+//NOTE this file will be used for foreign key pairings in future applications
+
 module.exports = (sequelize, DataTypes) => {
   var SoundFile = sequelize.define('SoundFile', {
     id: {

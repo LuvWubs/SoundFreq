@@ -1,190 +1,241 @@
-// const soundDB = require('./sounds')
 $(document).ready(function() {
 
-  // make api call to populate db with Sounds
-  //$.ajax({
-    //method: 'POST',
-    //data: {}
-  //});
-  //     id, name, file, description
+    $('.sound-nav').on('click', function(e) {
+      e.preventDefault();
+      var category = $(event.target)[0].id;
+      console.log('chosen category: ', category);
+      $.get('/api/sounds/' + category, function(data) {
+        console.log('getting ' + category + ' sounds from api-routes...');
+
+        randoNoise(data);
+      })
+    })
+
+    //NOTE will need this for requesting 'all' sound files
+    // $.get('/api/sounds', function(data) {
+    //   console.log('data!!!!', data);
+    //
+    //   loadBtns(data);
+    //
+    //
+    // });
+
+    function randoNoise(sounds) {
+      $(document).keydown(function() {
+        for (i = 0; i < sounds.length; i++) {
+          var rando = sounds[i].file;
+        };
+        var rando = sounds[Math.floor(Math.random()*sounds.length)];
+        console.log('rando: ', rando);
+        var randoFile = rando.file;
+        console.log('on keydown ' + randoFile + ' was requested');
+        playIt(randoFile);
+      });
+    };
+
+    function playIt(filepath) {
+      console.log('this is the filepath in playIt(): ', filepath);
+      var sound = new Howl({
+        src: [filepath]
+        //   autoplay: false,
+        //   loop: false,
+        //   volume: 0.5,
+      })
+      sound.play();
+    }
+
+  });
+
+  // NOTE api call to populate db with Sounds
   $.post('/api/sounds', {sounds: [
+    {
+      name: 'buzz',
+      file: '/sounds/bug-buzz.wav',
+      description: 'bug'
+    },
+    {
+      name: 'call',
+      file: '/sounds/bug-call.wav',
+      description: 'bug'
+    },
+    {
+      name: 'clicks',
+      file: '/sounds/bug-clicks.wav',
+      description: 'bug'
+    },
+    {
+      name: 'fireants',
+      file: '/sounds/bug-fireants.wav',
+      description: 'bug'
+    },
+    {
+      name: 'purring',
+      file: '/sounds/bug-purring.wav',
+      description: 'bug'
+    },
+    {
+      name: 'wings',
+      file: '/sounds/bug-wings.wav',
+      description: 'bug'
+    },
+    {
+      name: 'beatbox',
+      file: '/sounds/drops-beatbox.wav',
+      description: 'drops'
+    },
+    {
+      name: 'explosion',
+      file: '/sounds/drops-explosion.flac',
+      description: 'drops'
+    },
+    {
+      name: 'warble',
+      file: '/sounds/drops-warble.ogg',
+      description: 'drops'
+    },
+    {
+      name: 'bubbles',
+      file: '/sounds/electronics-bubbles.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'chatting',
+      file: '/sounds/electronics-chatting.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'chords',
+      file: '/sounds/electronics-chords.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'circus',
+      file: '/sounds/electronics-circus.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'erie',
+      file: '/sounds/electronics-erie.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'gutteral',
+      file: '/sounds/electronics-gutteral.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'highhat',
+      file: '/sounds/electronics-highhat.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'laserhits',
+      file: '/sounds/electronics-laserhits.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'pipes',
+      file: '/sounds/electronics-pipes.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'signal',
+      file: '/sounds/electronics-signal.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'warble',
+      file: '/sounds/electronics-warble.wav',
+      description: 'electronics'
+    },
+    {
+      name: 'frogs',
+      file: '/sounds/nature-frogs.wav',
+      description: 'nature'
+    },
+    {
+      name: 'beads',
+      file: '/sounds/noise-beads.wav',
+      description: 'noise'
+    },
+    {
+      name: 'boioing',
+      file: '/sounds/noise-boioing.wav',
+      description: 'noise'
+    },
+    {
+      name: 'cat',
+      file: '/sounds/noise-cat.wav',
+      description: 'noise'
+    },
+    {
+      name: 'electricwhoosh',
+      file: '/sounds/noise-electricwhoosh.wav',
+      description: 'noise'
+    },
+    {
+      name: 'laughter',
+      file: '/sounds/noise-laughter.wav',
+      description: 'noise'
+    },
+    {
+      name: 'metaltwang',
+      file: '/sounds/noise-metaltwang.wav',
+      description: 'noise'
+    },
+    {
+      name: 'meteor',
+      file: '/sounds/noise-meteor.wav',
+      description: 'noise'
+    },
+    {
+      name: 'minions',
+      file: '/sounds/noise-minions.wav',
+      description: 'noise'
+    },
+    {
+      name: 'nailpull',
+      file: '/sounds/noise-nailpull.wav',
+      description: 'noise'
+    },
+    {
+      name: 'noisemaker',
+      file: '/sounds/noise-noisemaker.wav',
+      description: 'noise'
+    },
+    {
+      name: 'pied',
+      file: '/sounds/noise-pied.wav',
+      description: 'noise'
+    },
+    {
+      name: 'raspberry',
+      file: '/sounds/noise-raspberry.wav',
+      description: 'noise'
+    },
+    {
+      name: 'recordscratch',
+      file: '/sounds/noise-recordscratch.wav',
+      description: 'noise'
+    },
+    {
+      name: 'squeek',
+      file: '/sounds/noise-squeek.wav',
+      description: 'noise'
+    },
+    {
+      name: 'stungun',
+      file: '/sounds/noise-stungun.wav',
+      description: 'noise'
+    },
     {
       name: 'thump',
       file: '/sounds/noise-thump.wav',
-      description: 'thump'
+      description: 'noise'
     },
     {
-      name: 'bump',
-      file: '/sounds/noise-bump.wav',
-      description: 'bump'
+      name: 'whizz',
+      file: '/sounds/noise-whizz.wav',
+      description: 'noise'
     },
   ]});
-
-  $.get('/api/sounds', function(data) {
-    console.log('data!!!!', data);
-
-    // loop over data.sounds and attach event listeners to them
-    
-
-  });
-
-  $( document ).keydown(function( event ) {
-
-    var thump = new Howl({
-      src: ['/sounds/noise-thump.wav', 'noise-thump.mp3', 'noise-thump.webm'],
-      autoplay: false,
-      loop: false,
-      volume: 0.5,
-      onend: function() {
-        console.log('Finished!');
-      }
-    });
-
-    if ( event.which == 65 ) {
-       event.preventDefault();
-       console.log('the A key is working');
-       thump.play();
-    };
-
-  });
-});
-
-
-// Play returns a unique Sound ID that can be passed
-// into any method on Howl to control that specific sound.
-// var id1 = sound.play();
-// var id2 = sound.play();
-
-// Fade out the first sound and speed up the second.
-// sound.fade(1, 0, 1000, id1);
-// sound.rate(1.5, id2);
-//
-//   $( document ).on( "keydown", function( event ) {
-//     var keyChoice = event.which;
-//     console.log(keyChoice);
-//     $.ajax({
-//       method: "GET",
-//       //url: "/audio" + keyChoice
-//       url: "/audiovisual/" + keyChoice
-//     }).then(function(data) {
-//       // data = { audio: 'thump.wav', visual: 'cat.jpeg' }
-//       // NOTE play sound file
-//       var audio = data.audio;
-//       var visual = data.visual;
-//       // play audiovisual
-//
-//       // play visual
-//
-//     })
-//       // switch (event.which) {
-//       //   case 65: sound();
-//       //       // break;
-//       // }
-//   });
-  // });
-//
-// // const song = require('../..app/models/soundFiles.js')
-//
-//   };
-//   $('#play').keypress(function() {
-//     console.log('a button was pressed');
-//   };
-//
-//
-//   var sound = new Howl({
-//     urls: ['sound.mp3', 'sound.ogg']
-//   }).play();
-//
-//   $(document).keydown(function(e) {
-// //need to load file path from db in each switch statement
-//     switch (e.which) {
-//       case 65:
-//           break;
-//       case 66:
-//           break;
-//       case 67:
-//           break;
-//       case 68:
-//           break;
-//       case 69:
-//           break;
-//       case 70:
-//           break;
-//       case 71:
-//           break;
-//       case 72:
-//           break;
-//       case 73:
-//           break;
-//       case 74:
-//           break;
-//       case 75:
-//           break;
-//       case 76:
-//           break;
-//       case 77:
-//           break;
-//       case 78:
-//           break;
-//       case 79:
-//           break;
-//       case 80:
-//           break;
-//       case 81:
-//           break;
-//       case 82:
-//           break;
-//       case 83:
-//           break;
-//       case 84:
-//           break;
-//       case 85:
-//           break;
-//       case 86:
-//           break;
-//       case 87:
-//           break;
-//       case 88:
-//           break;
-//       case 89:
-//           break;
-//       case 90:
-//           break;
-//     }
-//   });
-//
-// //NOTE test feature with #play button
-//   var audioElement = document.createElement('audio');
-//     audioElement.setAttribute('src', './sounds/bug-purring.wav');
-//
-//     audioElement.addEventListener('ended', function() {
-//         this.play();
-//     }, false);
-//
-//     // audioElement.addEventListener("canplay",function(){
-//     //     $("#length").text("Duration:" + audioElement.duration + " seconds");
-//     //     $("#source").text("Source:" + audioElement.src);
-//     //     $("#status").text("Status: Ready to play").css("color","green");
-//     // });
-//     //
-//     // audioElement.addEventListener("timeupdate",function(){
-//     //     $("#currentTime").text("Current second:" + audioElement.currentTime);
-//     // });
-//     //
-//     $('#play').click(function() {
-//         // audioElement.play();
-//         console.log('play button clicked');
-//         // $("#status").text("Status: Playing");
-//     });
-//
-//     // $('#pause').click(function() {
-//     //     audioElement.pause();
-//     //     $("#status").text("Status: Paused");
-//     // });
-//     //
-//     // $('#restart').click(function() {
-//     //     audioElement.currentTime = 0;
-//     // });
-// });
-
-// module.exports = event.which;
