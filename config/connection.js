@@ -11,16 +11,7 @@ var connection;
       password: '',
       database: 'soundDB'
   });
-  // connection = new Sequelize("soundDB", "root", "", {
-  //   host: "localhost",
-  //   port: 3306,
-  //   dialect: "mysql",
-  //   pool: {
-  //     max: 5,
-  //     min: 0,
-  //     idle: 10000
-  //   }
-  // });
+
 // }
 
 connection.connect();
